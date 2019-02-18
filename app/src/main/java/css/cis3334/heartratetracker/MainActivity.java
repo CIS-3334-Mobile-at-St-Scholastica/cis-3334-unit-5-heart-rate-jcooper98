@@ -12,8 +12,9 @@ public class MainActivity extends AppCompatActivity {
 
     HeartRateList heartRateList;        // The list of heart rate objects
     ArrayAdapter<HeartRate> hrAdapter;  // The custom array adapter for displaying the heart rates in the list view
-    ListView lvHeartRates;              // The list view for the heart rates from the activity_mail.xml file
-    TextView tvSelect;                  // The text view for the selected rate the user clicks on from the activity_mail.xml file
+    ListView lvHeartRates;              // The list view for the heart rates from the activity_main.xml file
+    TextView tvSelect;                  // The text view for the selected rate the user clicks on from the activity_main.xml file
+
 
 
     @Override
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         lvHeartRates = (ListView) findViewById(R.id.listViewHeartRates);
         tvSelect = (TextView) findViewById(R.id.textViewSelect);
+
 
         heartRateList = new HeartRateList();
         heartRateList.InitRandomElderly();
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 HeartRate hr = (HeartRate) parent.getItemAtPosition(position);
                 tvSelect.setText("You selected: " + hr.toString());
+
 
             }
         });

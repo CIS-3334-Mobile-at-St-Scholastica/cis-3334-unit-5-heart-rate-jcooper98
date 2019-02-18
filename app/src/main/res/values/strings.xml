@@ -3,4 +3,6 @@
     <string name="textViewPulse">Pulse</string>
     <string name="textViewSelect">Select a heart measurement</string>
     <string name="textView">Pulse:</string>
+    <string name="_99_9">99.9</string>
+    <string name="textViewRange">Range:</string>
 </resources>

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by Tom Gibbons in Feb 2017.
  * For the CIS 3334 class at St. Scholastica
@@ -18,6 +20,8 @@ public class HeartRateAdapter  extends ArrayAdapter<HeartRate> {
 
     private final Context context;      // The activity calling this adapter
     private HeartRateList hrList;       // The object holding the arraylist of hear rates
+    TextView textViewRangeName;
+    TextView textViewDescription;
 
     /**
      *
@@ -30,6 +34,7 @@ public class HeartRateAdapter  extends ArrayAdapter<HeartRate> {
         super(context, rowLayout, dummyTV, hrList.getList());
         this.context = context;
         this.hrList = hrList;
+
     }
 
     /**
@@ -49,8 +54,32 @@ public class HeartRateAdapter  extends ArrayAdapter<HeartRate> {
         //get the heart rate we are displaying
         HeartRate hr = hrList.getHeartRate(position);
 
+        textViewRangeName = (TextView) view.findViewById(R.id.textViewRangeName);
         TextView tvPulse=(TextView)view.findViewById(R.id.textViewPulse);
+        textViewDescription = (TextView) view.findViewById(R.id.textViewDescription);
+
         tvPulse.setText(hr.getPulse().toString());
+        textViewRangeName.setText(hr.getRangeName());
+        textViewDescription.setText(hr.getRangeDescrtiption());
+
+
+
+        // Not quite sure on what the range returns. This is what gave me the most variety for color in the app.
+        if (hr.getRange() == 3)
+        {
+            textViewRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        }
+        else if (hr.getRange() == 2)
+        {
+            textViewRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+        }
+        else if (hr.getRange() == 1)
+        {
+            textViewRangeName.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+        }
+
+
+
 
         return(view);
     }
